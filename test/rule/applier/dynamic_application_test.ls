@@ -1,20 +1,12 @@
-requires  = require '../../../../requires'
+require '../../test_setup'
 
-requires.test 'test_setup'
+rule      = require '../../../index'
 
-Permit          = requires.lib    'permit'    .Permit
-PermitRegistry  = requires.permit 'registry'  .PermitRegistry
+fixtures = require '../../fixtures'
+User     = fixtures.user
+Book     = fixtures.book
 
-Book            = requires.fix 'book'
-permit-clazz    = requires.fix 'permit-class'
-
-create-permit   = requires.fac 'create-permit'
-create-user     = requires.fac 'create-user'
-
-AdminPermit     = permit-clazz.AdminPermit
-GuestPermit     = permit-clazz.GuestPermit
-
-describe 'Permit' ->
+describe 'Dynamic rule application on Rule container' ->
   var book, applier
   requests  =
     admin: {}

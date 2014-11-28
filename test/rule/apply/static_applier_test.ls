@@ -1,14 +1,14 @@
 require '../../test_setup'
 
-fixtures = require '../../fixtures'
-User          = fixtures.user
-Book          = fixtures.book
-
-rule = require '../../../index'
-
+rule              = require '../../../index'
 RulesApplier      = rule.apply.StaticApplier
 ExecutionContext  = rule.apply.ExecutionContext
 
+fixtures = require '../../fixtures'
+User     = fixtures.user
+Book     = fixtures.book
+
+# API - see https://github.com/kristianmandrup/rules-repo
 RuleRepo          = ->
   clean: ->
     # todo

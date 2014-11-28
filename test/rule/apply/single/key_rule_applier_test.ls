@@ -1,10 +1,11 @@
-requires  = require '../../../../../requires'
+require '../../../test_setup'
 
-requires.test 'test_setup'
+rule            = require '../../../../index'
+KeyRuleApplier  = rule.apply.single.KeyRuleApplier
 
-expect = require 'chai' .expect
-
-KeyRuleApplier = requires.rule 'apply' .single.KeyRuleApplier
+fixtures = require '../../../fixtures'
+User     = fixtures.user
+Book     = fixtures.book
 
 create-applier = (rules, name, context, debug = true) ->
   new KeyRuleApplier rules, name, context, debug

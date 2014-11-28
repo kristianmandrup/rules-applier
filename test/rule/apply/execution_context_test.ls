@@ -1,14 +1,23 @@
-requires  = require '../../../../requires'
+require '../../test_setup'
 
-requires.test 'test_setup'
+rule              = require '../../../index'
+ExecutionContext  = rule.apply.ExecutionContext
+
+fixtures = require '../../fixtures'
+User     = fixtures.user
+Book     = fixtures.book
+
+# API - see https://github.com/kristianmandrup/rules-repo
+RuleRepo          = ->
+  clean: ->
+    @
+  clear: ->
+    @
+    # todo
+  can: {}
+  cannot: {}
 
 expect = require 'chai' .expect
-
-User          = requires.fix 'user'
-Book          = requires.fix 'book'
-
-RuleRepo          = requires.rule 'repo'  .RuleRepo
-ExecutionContext  = requires.rule 'apply' .ExecutionContext
 
 # Note: Use rule-repo.display! for debugging internals of RuleRepo instances after rule application
 

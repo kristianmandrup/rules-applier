@@ -1,13 +1,22 @@
-requires  = require '../../../../requires'
+require '../../test_setup'
 
-requires.test 'test_setup'
+rule              = require '../../../index'
+RulesApplier      = rule.apply.DynamicApplier
+ExecutionContext  = rule.apply.ExecutionContext
 
-User              = requires.fix 'user'
-Book              = requires.fix 'book'
+fixtures = require '../../fixtures'
+User     = fixtures.user
+Book     = fixtures.book
 
-RulesApplier      = requires.rule 'apply' .DynamicApplier
-RuleRepo          = requires.rule 'repo'  .RuleRepo
-ExecutionContext  = requires.rule 'apply' .ExecutionContext
+# API - see https://github.com/kristianmandrup/rules-repo
+RuleRepo          = ->
+  clean: ->
+    @
+  clear: ->
+    @
+    # todo
+  can: {}
+  cannot: {}
 
 expect = require 'chai' .expect
 
