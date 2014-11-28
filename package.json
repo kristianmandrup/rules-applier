@@ -1,0 +1,48 @@
+{
+  "name": "permit-authorize",
+  "version": "0.6.0",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url":  "https://github.com/kristianmandrup/permit-authorize.git"
+  },
+  "keywords": [
+    "authorize",
+    "authorizer",
+    "authorization",
+    "approve",
+    "permit",
+    "allow",
+    "can",
+    "cancan",
+    "ability",
+    "rules",
+    "access",
+    "security"
+  ],
+  "dependencies": {
+  },
+  "scripts": {
+    "test":     "make test",
+    "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --ui bdd -R test -t 5000"
+  },
+  "devDependencies": {
+    "fingerprint":              "kristianmandrup/fingerprint#master",
+    "access-request":           "kristianmandrup/access-request#master",
+    "callback-timer":           "x",
+    "sleep":                    "x",
+    "LiveScript":               "x",
+    "browserify":               "x",
+    "es6ify":                   "x",
+    "mocha":                    "x",
+    "chai":                     "x",
+    "util":                     "x",
+    "expect.js":                "x",
+    "should":                   "x",
+    "istanbul":                 "x",
+    "grunt":                    "x",
+    "grunt-mocha-test":         "x",
+    "grunt-istanbul":           "x",
+    "grunt-istanbul-coverage":  "x"
+  }
+}

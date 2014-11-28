@@ -1,0 +1,33 @@
+{
+  "name": "permit-authorize",
+  "main": [
+    "dist/permit-authorize.js",
+    "dist/permit-authorize.min.js"
+  ],
+  "version": "0.6.1",
+  "homepage": "https://github.com/kristianmandrup/permit-authorize",
+  "authors": [
+    "Kristian Mandrup <kmandrup@gmail.com>"
+  ],
+  "description": "Authorization using permits",
+  "keywords": [
+    "auth",
+    "authorize",
+    "authorization",
+    "permits",
+    "permit",
+    "rules",
+    "users",
+    "roles",
+    "security"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
