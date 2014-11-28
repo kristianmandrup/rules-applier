@@ -1,13 +1,15 @@
-rule = require '../../rule'
+apply = require '../apply'
 util = require '../../util'
 
-RulesAccessor     = rule.RulesAccessor
+# RulesAccessor     = rule.RulesAccessor
+# RepoGuard ?
+
 camel-case        = util.string.camel-case
 Debugger          = util.Debugger
 
-StaticApplier     = rule.apply.StaticApplier
-DynamicApplier    = rule.apply.DynamicApplier
-ExecutionContext  = rule.apply.ExecutionContext
+StaticApplier     = apply.StaticApplier
+DynamicApplier    = apply.DynamicApplier
+ExecutionContext  = apply.ExecutionContext
 
 module.exports = class PermitRuleApplier implements Debugger
   (@ctx, @access-request, @debugging = true) ->

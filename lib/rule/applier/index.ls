@@ -1,3 +1,2 @@
 module.exports =
-  loader:             require './loader'
-  PermitRuleApplier:  require './permit_rule_applier'
+  RuleApplier:  require './rule_applier'

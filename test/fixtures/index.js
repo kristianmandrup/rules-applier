@@ -2,8 +2,6 @@
 (function(){
   module.exports = {
     book: require('./book'),
-    user: require('./user'),
-    permits: require('./permits'),
-    permitClass: require('./permit_class')
+    user: require('./user')
   };
 }).call(this);

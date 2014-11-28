@@ -1,16 +1,19 @@
-requires  = require '../../../../requires'
+require '../../test_setup'
 
-requires.test 'test_setup'
+fixtures = require '../../fixtures'
+User          = fixtures.user
+Book          = fixtures.book
 
-User          = requires.fix 'user'
-Book          = requires.fix 'book'
+rule = require '../../../index'
 
-console.log requires.rule
+RulesApplier      = rule.apply.StaticApplier
+ExecutionContext  = rule.apply.ExecutionContext
 
-RulesApplier      = requires.rule 'apply' .StaticApplier
-ExecutionContext  = requires.rule 'apply' .ExecutionContext
-
-RuleRepo          = requires.rule 'repo' .RuleRepo
+RuleRepo          = ->
+  clean: ->
+    # todo
+  can: {}
+  cannot: {}
 
 expect = require 'chai' .expect
 
