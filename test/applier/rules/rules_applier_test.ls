@@ -1,8 +1,8 @@
 require '../../test_setup'
 
-rule              = require '../../../index'
-RulesApplier      = rule.apply.RulesApplier
-ExecutionContext  = rule.apply.ExecutionContext
+applier           = require '../../../index'
+RulesApplier      = applier.rules.RulesApplier
+ApplyContext      = applier.ApplyContext
 
 fixtures = require '../../fixtures'
 User     = fixtures.user
@@ -37,7 +37,7 @@ describe 'RulesApplier' ->
     new RuleRepo name, debug .clean!
 
   create-exec-ctx = (debug = true) ->
-    new ExecutionContext create-repo!, debug
+    new ApplyContext create-repo!, debug
 
   create-rules-applier = (rules, access-request, debug = true) ->
     new RulesApplier create-exec-ctx!, rules, access-request, debug

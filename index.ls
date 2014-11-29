@@ -1,1 +1,1 @@
-module.exports = require './lib/rule'
+module.exports = require './lib/applier'

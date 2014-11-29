@@ -35,6 +35,7 @@ describe 'Dynamic rule application on Rule container' ->
 
     describe 'dynamic rules application - user rules' ->
       before-each ->
+        # use regular rule container, remove dependency on permits!
         Permit.registry.clean!
         permits.guest := create-permit.admin!
 

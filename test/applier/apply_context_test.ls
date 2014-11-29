@@ -1,9 +1,9 @@
-require '../../test_setup'
+require '../test_setup'
 
-rule              = require '../../../index'
-ExecutionContext  = rule.apply.ExecutionContext
+applier           = require '../../index'
+ApplyContext  = applier.ApplyContext
 
-fixtures = require '../../fixtures'
+fixtures = require '../fixtures'
 User     = fixtures.user
 Book     = fixtures.book
 
@@ -21,7 +21,7 @@ expect = require 'chai' .expect
 
 # Note: Use rule-repo.display! for debugging internals of RuleRepo instances after rule application
 
-describe 'ExecutionContext' ->
+describe 'ApplyContext' ->
   var book
   var rule-repo
 
@@ -30,19 +30,19 @@ describe 'ExecutionContext' ->
   create-repo = ->
     new RuleRepo('static repo').clear!
 
-  describe 'create ExecuteContext' ->
+  describe 'create ApplyContext' ->
     context 'with no repo' ->
       specify 'throws error' ->
-        expect( -> new ExecutionContext).to.throw
+        expect( -> new ApplyContext).to.throw
 
     context 'with a valid repo' ->
       specify 'creates with the repo' ->
-        expect( -> new ExecutionContext create-repo!).to.not.throw
+        expect( -> new ApplyContext create-repo!).to.not.throw
 
-    context 'ExecuteContext with valid repo' ->
+    context 'ApplyContext with valid repo' ->
       var ctx
       before ->
-        ctx := new ExecutionContext create-repo!
+        ctx := new ApplyContext create-repo!
 
       describe 'ucan' ->
         # ucan: (actions, subjects, ctx) ->

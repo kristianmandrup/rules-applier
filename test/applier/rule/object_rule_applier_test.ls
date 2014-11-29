@@ -1,11 +1,13 @@
-require '../../../test_setup'
+require '../../test_setup'
 
-rule              = require '../../../../index'
-ObjectRuleApplier = rule.apply.single.ObjectRuleApplier
+applier         = require '../../../index'
+ObjectRuleApplier = applier.rule.ObjectRuleApplier
 
-fixtures = require '../../../fixtures'
+fixtures = require '../../fixtures'
 User     = fixtures.user
 Book     = fixtures.book
+
+expect = require 'chai' .expect
 
 create-applier = (rules, name, context, debug = true) ->
   new ObjectRuleApplier rules, name, context, debug

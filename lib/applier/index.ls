@@ -1,6 +1,6 @@
 module.exports =
-  rule:     require './rule'
-  rules:    require './rules'
-  util:     require './util'
-  apply-context:  require './apply_context'
+  rule:           require './rule'
+  rules:          require './rules'
+  util:           require './util'
+  ApplyContext:   require './apply_context'
 

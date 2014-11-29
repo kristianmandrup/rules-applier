@@ -1,4 +1,4 @@
-Debugger = require '../../util' .Debugger
+Debugger = require '../util' .Debugger
 util = require 'util'
 
 # a context to execute a rule

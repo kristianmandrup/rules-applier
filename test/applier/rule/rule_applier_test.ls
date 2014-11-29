@@ -1,8 +1,8 @@
 require '../../test_setup'
 
-rule              = require '../../../index'
-RuleApplier       = rule.apply.single.RuleApplier
-ExecutionContext  = rule.apply.ExecutionContext
+applier           = require '../../../index'
+RuleApplier       = applier.rule.RuleApplier
+ApplyContext      = applier.ApplyContext
 
 fixtures = require '../../fixtures'
 User     = fixtures.user

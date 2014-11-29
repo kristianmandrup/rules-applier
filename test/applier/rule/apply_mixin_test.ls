@@ -1,11 +1,13 @@
-require '../../../test_setup'
+require '../../test_setup'
 
-rule        = require '../../../../index'
-ApplyMixin  = rule.apply.single.ApplyMixin
+applier     = require '../../../index'
+ApplyMixin  = applier.rule.ApplyMixin
 
-fixtures = require '../../../fixtures'
+fixtures = require '../../fixtures'
 User     = fixtures.user
 Book     = fixtures.book
+
+expect = require 'chai' .expect
 
 class Invalid implements ApplyMixin
   ->
