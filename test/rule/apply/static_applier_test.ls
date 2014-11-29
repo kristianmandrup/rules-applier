@@ -29,7 +29,7 @@ describe 'StaicApplier' ->
   create-applier = (ctx, rules, debug = true) ->
     new RulesApplier ctx, rules, debug
 
-  create-repo = (name = 'dynamic repo', debug = false) ->
+  create-repo = (name = 'static repo', debug = false) ->
     new RuleRepo name, debug .clean!
 
   create-exec-ctx = (debug = true) ->

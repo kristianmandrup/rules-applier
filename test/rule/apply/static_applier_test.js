@@ -24,7 +24,7 @@
       return new RulesApplier(ctx, rules, debug);
     };
     createRepo = function(name, debug){
-      name == null && (name = 'dynamic repo');
+      name == null && (name = 'static repo');
       debug == null && (debug = false);
       return new RuleRepo(name, debug).clean();
     };

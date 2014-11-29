@@ -3,7 +3,7 @@
   var rule, RulesApplier, ExecutionContext, fixtures, User, Book, RuleRepo, expect;
   require('../../test_setup');
   rule = require('../../../index');
-  RulesApplier = rule.apply.DynamicApplier;
+  RulesApplier = rule.apply.RulesApplier;
   ExecutionContext = rule.apply.ExecutionContext;
   fixtures = require('../../fixtures');
   User = fixtures.user;
@@ -21,8 +21,8 @@
     };
   };
   expect = require('chai').expect;
-  describe('Rule Applier (RuleApplier)', function(){
-    var book, repo, ruleApplier, rules, requests, ctx, obj, createRepo, createExecCtx, createRulesApplier, execRuleApplier;
+  describe('RulesApplier', function(){
+    var book, repo, rulesApplier, rules, requests, ctx, obj, createRepo, createExecCtx, createRulesApplier, execRuleApplier;
     rules = {};
     requests = {};
     ctx = {};
@@ -63,87 +63,30 @@
       action: 'read',
       subject: book
     };
-    ruleApplier = createRulesApplier(rules.managePaper, requests.readBook);
-    describe('apply-rules-for', function(){
+    rulesApplier = createRulesApplier(rules.managePaper, requests.readBook);
+    describe('repo', function(){
+      return expect(typeof rulesApplier.repo).to.eql('object');
+    });
+    describe('apply(thing, ctx)', function(){
+      var res;
       beforeEach(function(){
-        ruleApplier.applyRulesFor('area');
-        return repo = ruleApplier.repo();
+        return res = rulesApplier.apply(thing, ctx);
       });
-      return specify('should apply the area rule', function(){
-        return expect(repo.canRules().manage).to.eql(['Paper']);
-      });
+      return specify('res is ??', function(){});
     });
-    describe('context-rules', function(){
+    describe('rule-applier(thing, ctx)', function(){
+      return expect(rulesApplier.ruleApplier(thing, ctx)).to.be.an.instanceOf(RuleApplier);
+    });
+    return describe('apply-all', function(){
+      var res;
       beforeEach(function(){
-        ctx.area = ruleApplier.contextRules('area');
-        ctx.admin = ruleApplier.contextRules('admin');
-        return ruleApplier.contextRules('admin');
+        return res = rulesApplier.applyAll();
       });
-      specify('should return itself (area) since it is a Function and no more keys underneath', function(){
-        return expect(Object.keys(ctx.area)).to.eql(['area', 'admin']);
+      specify('res is ??', function(){
+        return expect(res).to.eql('xxx');
       });
-      return specify('should return Object it points to', function(){
-        return expect(Object.keys(ctx.admin)).to.eql(['domain']);
-      });
-    });
-    describe('apply-obj-rules-for', function(){
-      before(function(){
-        obj.area = {
-          edit: 'book'
-        };
-        return obj.admin = {
-          admin: 'movie'
-        };
-      });
-      context('object', function(){
-        beforeEach(function(){
-          ruleApplier.applyObjRulesFor(obj, 'area');
-          return repo = ruleApplier.repo();
-        });
-        return specify('should return manage Paper', function(){
-          return expect(repo.canRules().manage).to.eql(['Paper']);
-        });
-      });
-      return context('area - edit', function(){
-        beforeEach(function(){
-          ruleApplier.applyObjRulesFor(obj.area, 'edit');
-          return repo = ruleApplier.repo();
-        });
-        return specify('should return manage Paper', function(){
-          return expect(repo.canRules().manage).to.eql(['Paper']);
-        });
-      });
-    });
-    xdescribe('apply-all-rules', function(){
-      beforeEach(function(){
-        ruleApplier.applyAllRules();
-        return repo = ruleApplier.repo();
-      });
-      return specify('should return manage Paper', function(){
-        return expect(repo.canRules().manage).to.eql(['Paper']);
-      });
-    });
-    return xcontext('full scenarios', function(){
-      return describe('manage paper', function(){
-        return context('applied default rule: manage Paper', function(){
-          before(function(){
-            rules.managePaper = {
-              'default': function(){
-                return this.ucan('manage', 'Paper');
-              }
-            };
-            ruleApplier = createRulesApplier(rules.managePaper, requests.readBook);
-            return repo = ruleApplier.repo();
-          });
-          return specify('should add create, edit and delete can-rules', function(){
-            return repo.canRules().should.eql({
-              manage: ['Paper'],
-              create: ['Paper'],
-              edit: ['Paper'],
-              'delete': ['Paper']
-            });
-          });
-        });
+      return specify('repo has rules', function(){
+        return expect(res.repo).to.eql({});
       });
     });
   });
