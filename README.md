@@ -8,13 +8,13 @@ Needs some polishing... Please help out :)
 
 ## Rule application
 
-Rule application is always performed in an `ExecutionContext`
+Rule application is always performed in an `ApplyContext`
 
-### Execution Context
+### Apply Context
 
-All rules are applied in an execution context
+All rules are applied in an apply context
 
-`ruleExecutionContext = new ExecutionContext(rulesRepository)`
+`ruleApplyContext = new ApplyContext(rulesRepository)`
 
 ```js
 ucan: (actions, subjects, ctx) ->
@@ -67,10 +67,14 @@ Also see `StaticApplier`
 
 ## Static rule application
 
+Rules that can be applied on application load. Rules that always have the same effect.
+Rules which are not dependant on the access request, ie. rule functions which don't take
+an `access-request` as an argument.
+
 ### Static Applier
 
 The `StaticApplier` is used to apply static rules that always return the same
-permission result with no concern for the access request.
+permission result with no concern for the `access-request`.
 
 ```js
 staticApplier = new StaticApplier(executionContext, rules)

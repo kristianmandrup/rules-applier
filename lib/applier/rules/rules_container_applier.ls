@@ -11,7 +11,8 @@ StaticApplier     = apply.StaticApplier
 DynamicApplier    = apply.DynamicApplier
 ExecutionContext  = apply.ExecutionContext
 
-module.exports = class PermitRuleApplier implements Debugger
+# To be used for a RuleContainer which contains both static and dynamic rules, f.ex a Permit
+module.exports = class ContainerRulesApplier implements Debugger
   (@ctx, @access-request, @debugging = true) ->
     @_validate!
     @applied-rules = false

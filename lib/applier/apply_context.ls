@@ -2,13 +2,13 @@ Debugger = require '../../util' .Debugger
 util = require 'util'
 
 # a context to execute a rule
-module.exports = class ExecutionContext implements Debugger
+module.exports = class ApplyContext implements Debugger
   (@repo, @debugging) ->
     @debug 'execute context', @repo
     @_validate!
     @
 
-  _type: 'ExecutionContext'
+  _type: 'ApplyContext'
 
   _validate: ->
     unless typeof! @repo is 'Object'
