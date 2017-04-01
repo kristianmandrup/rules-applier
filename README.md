@@ -1,5 +1,7 @@
 # Rule Applier
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kristianmandrup/rules-applier.svg)](https://greenkeeper.io/)
+
 Perform rule application both statically and dynamically ;)
 
 ## Status
